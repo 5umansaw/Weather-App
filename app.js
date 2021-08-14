@@ -6,7 +6,7 @@ const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
 const locationElement = document.querySelector(".location p");
-const notificationElement = document.querySelector(".notification");
+
 
 // App data
 const weather = {
@@ -49,19 +49,26 @@ function showError(error){
     notificationElement.style.display = "block";
     notificationElement.innerHTML = `<p> ${error.message} </p>`;
 }
-*/
-    function currcity(){
+*/ 
+    function refresh(){
        const cityval= document.getElementById("city_name").value;
-       document.getElementById("city_name").innerText.display= "none";
-          getWeather(cityval);
+        console.log(cityval);
+        getWeather(cityval);
    }
-
+     
 // GET WEATHER FROM API PROVIDER
+        
+  function  getWeather(cityval){
+    var url = new URL('https://api.openweathermap.org/data/2.5/weather?q=Mumbai&appid=0c1d39799b301cf9530211799eb4a281');
+    var search_params = url.searchParams;
 
+// new value of "id" is set to "101"
+    search_params.set('q', cityval);
 
-    const api = `api.openweathermap.org/data/2.5/weather?q=London&appid=0c1d39799b301cf9530211799eb4a281`
-    
-    fetch(api)
+// change the search property of the main url
+    url.search = search_params.toString();
+
+    fetch(url)
         .then(function(response){
             let data = response.json();
             return data;
@@ -77,6 +84,7 @@ function showError(error){
         .then(function(){
             displayWeather();
         });
+    }
 
 // DISPLAY WEATHER TO UI
 function displayWeather(){
@@ -87,6 +95,7 @@ function displayWeather(){
 }
 
 // C to F conversion
+/*
 function celsiusToFahrenheit(temperature){
     return (temperature * 9/5) + 32;
 }
@@ -106,4 +115,5 @@ tempElement.addEventListener("click", function(){
         weather.temperature.unit = "celsius"
     }
 });
+*/
 
