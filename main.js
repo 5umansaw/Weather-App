@@ -2,7 +2,7 @@
       getVisitCount();
  })
 
-const functionApi = '';
+const functionApi = 'https://getweathercounter.azurewebsites.net/api/AzureFunction?code=JCRvaFagTjoG5AGgm/8I5r7dgfmE5Qk2BqSM4nQ7T1zOQedBaIhUiw==';
 
 const getVisitCount = () => {
     let count = 0;
